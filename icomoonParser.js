@@ -40,7 +40,12 @@ Author: Davide Calignano
 
 		//Generate all Symbols
 		function generate_symbol(paths, name) {
-			svg += '<symbol id="'+prefix+name+'" viewBox="0 0 1024 1024"><title>'+name+'</title><path class="path1" d="'+paths[0]+'"></path></symbol>';
+			var path;
+			$.each(paths, function(i,v){ 
+				path+='<path class="path'+i+'" d="'+v+'"></path>'
+			});
+			
+			svg += '<symbol id="'+prefix+name+'" viewBox="0 0 1024 1024"><title>'+name+'</title>'+path+'</symbol>';
 			results += '<div class="ic"><svg class="'+prefix+name+'"><use xlink:href="#'+prefix+name+'"></use></svg><span class="mls"> '+prefix+name+'</span></div>';
 		}
 
